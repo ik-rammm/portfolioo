@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ikram Moukhafi — Ingénieure Informatique &amp; Cybersécurité</title>
+<meta name="description" content="Portfolio d'Ikram Moukhafi, étudiante ingénieure en Informatique et Réseaux, spécialisée en cybersécurité.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root{
+  --bg-0:#060a10;
+  --bg-1:#0a1119;
+  --bg-2:#0e1622;
+  --bg-card:#0d1520;
+  --border:rgba(0,255,178,0.14);
+  --border-soft:rgba(255,255,255,0.07);
+  --accent:#00ffb2;
+  --accent-2:#00b8ff;
+  --accent-dim:rgba(0,255,178,0.12);
+  --violet:#7c5cff;
+  --text-0:#eaf2f4;
+  --text-1:#a9bac2;
+  --text-2:#6b7f8a;
+  --mono:'JetBrains Mono', monospace;
+  --sora:'Sora', sans-serif;
+  --grot:'Space Grotesk', sans-serif;
+  --radius:14px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg-0);
+  color:var(--text-0);
+  font-family:var(--sora);
+  line-height:1.6;
+  overflow-x:hidden;
+  position:relative;
+}
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(0,255,178,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,178,0.035) 1px, transparent 1px);
+  background-size:48px 48px;
+  pointer-events:none;
+  z-index:0;
+  mask-image:radial-gradient(ellipse 80% 60% at 50% 0%, black 20%, transparent 75%);
+}
+.glow-orb{
+  position:fixed;
+  border-radius:50%;
+  filter:blur(120px);
+  pointer-events:none;
+  z-index:0;
+  opacity:0.35;
+}
+.glow-1{width:600px;height:600px;background:var(--accent);top:-200px;left:-150px;}
+.glow-2{width:500px;height:500px;background:var(--violet);top:40%;right:-200px;opacity:0.2;}
+.glow-3{width:500px;height:500px;background:var(--accent-2);bottom:-150px;left:20%;opacity:0.18;}
+ 
+::selection{background:var(--accent);color:#04140f;}
+::-webkit-scrollbar{width:8px;}
+::-webkit-scrollbar-track{background:var(--bg-0);}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--accent),var(--accent-2));border-radius:10px;}
+ 
+.container{max-width:1180px;margin:0 auto;padding:0 32px;position:relative;z-index:1;}
+a{text-decoration:none;color:inherit;}
+ul{list-style:none;}
+img{max-width:100%;display:block;}
+ 
+/* ===== NAV ===== */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:18px 0;
+  background:rgba(6,10,16,0.65);
+  backdrop-filter:blur(16px) saturate(140%);
+  border-bottom:1px solid transparent;
+  transition:border-color .3s ease, background .3s ease, padding .3s ease;
+}
+nav.scrolled{border-bottom-color:var(--border-soft);padding:12px 0;background:rgba(6,10,16,0.88);}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;}
+.logo{
+  font-family:var(--mono);font-weight:600;font-size:1.05rem;letter-spacing:0.5px;
+  display:flex;align-items:center;gap:8px;color:var(--text-0);
+}
+.logo .bracket{color:var(--accent);}
+.nav-links{display:flex;gap:2px;align-items:center;}
+.nav-links a{
+  font-family:var(--mono);font-size:0.82rem;color:var(--text-1);
+  padding:9px 16px;border-radius:8px;transition:.25s;position:relative;
+}
+.nav-links a:hover{color:var(--text-0);background:rgba(255,255,255,0.04);}
+.nav-links a.active{color:var(--accent);}
+.nav-cta{
+  font-family:var(--mono);font-size:0.8rem;font-weight:500;
+  padding:9px 18px;border-radius:8px;
+  background:var(--accent);color:#04140f;
+  margin-left:10px;transition:.25s;
+}
+.nav-cta:hover{background:var(--accent-2);transform:translateY(-1px);}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:200;}
+.burger span{width:24px;height:2px;background:var(--text-0);transition:.3s;}
+ 
+/* ===== HERO ===== */
+.hero{
+  min-height:100vh;display:flex;align-items:center;position:relative;
+  padding:140px 0 80px;
+}
+.hero-grid{display:grid;grid-template-columns:1.15fr 0.85fr;gap:50px;align-items:center;}
+.eyebrow{
+  font-family:var(--mono);font-size:0.8rem;color:var(--accent);
+  display:inline-flex;align-items:center;gap:10px;margin-bottom:22px;
+  padding:7px 14px;border:1px solid var(--border);border-radius:30px;
+  background:var(--accent-dim);
+}
+.eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.4;}}
+.hero h1{
+  font-family:var(--grot);font-weight:700;font-size:clamp(2.4rem,5vw,4.1rem);
+  line-height:1.05;letter-spacing:-1.5px;margin-bottom:22px;
+}
+.hero h1 .line2{
+  background:linear-gradient(100deg,var(--accent),var(--accent-2) 60%,var(--violet));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero-sub{font-size:1.08rem;color:var(--text-1);max-width:560px;margin-bottom:34px;}
+.hero-sub strong{color:var(--text-0);font-weight:600;}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:48px;}
+.btn{
+  font-family:var(--mono);font-size:0.85rem;font-weight:500;
+  padding:14px 26px;border-radius:9px;display:inline-flex;align-items:center;gap:9px;
+  transition:.25s cubic-bezier(.2,.8,.2,1);cursor:pointer;border:1px solid transparent;
+}
+.btn-primary{background:var(--accent);color:#04140f;}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 30px -8px rgba(0,255,178,0.5);}
+.btn-outline{border-color:var(--border-soft);color:var(--text-0);background:rgba(255,255,255,0.02);}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px);}
+.hero-stats{display:flex;gap:36px;flex-wrap:wrap;}
+.stat-item{}
+.stat-num{font-family:var(--grot);font-size:1.9rem;font-weight:700;color:var(--text-0);}
+.stat-num span{color:var(--accent);}
+.stat-label{font-family:var(--mono);font-size:0.72rem;color:var(--text-2);text-transform:uppercase;letter-spacing:0.5px;}
+ 
+.hero-visual{position:relative;display:flex;align-items:center;justify-content:center;}
+.terminal{
+  width:100%;max-width:420px;background:var(--bg-card);
+  border:1px solid var(--border-soft);border-radius:12px;
+  box-shadow:0 30px 80px -20px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.02);
+  overflow:hidden;
+}
+.terminal-head{
+  display:flex;align-items:center;gap:8px;padding:12px 16px;
+  background:rgba(255,255,255,0.02);border-bottom:1px solid var(--border-soft);
+}
+.terminal-head span{width:11px;height:11px;border-radius:50%;}
+.t-red{background:#ff5f57;}.t-yellow{background:#febc2e;}.t-green{background:#28c840;}
+.terminal-title{font-family:var(--mono);font-size:0.72rem;color:var(--text-2);margin-left:8px;}
+.terminal-body{padding:22px;font-family:var(--mono);font-size:0.82rem;color:var(--text-1);min-height:260px;}
+.terminal-body .prompt{color:var(--accent);}
+.terminal-body .path{color:var(--accent-2);}
+.terminal-line{margin-bottom:9px;opacity:0;animation:typeIn .4s forwards;}
+.terminal-body .comment{color:var(--text-2);}
+.terminal-body .key{color:#ffb454;}
+.terminal-body .str{color:#7ee787;}
+@keyframes typeIn{to{opacity:1;}}
+.cursor-blink{display:inline-block;width:7px;height:14px;background:var(--accent);vertical-align:middle;animation:blink 1s step-end infinite;}
+@keyframes blink{50%{opacity:0;}}
+ 
+.scroll-indicator{
+  position:absolute;bottom:30px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  color:var(--text-2);font-family:var(--mono);font-size:0.7rem;
+}
+.scroll-indicator .mouse{width:22px;height:36px;border:1.5px solid var(--text-2);border-radius:12px;position:relative;}
+.scroll-indicator .mouse::before{
+  content:'';position:absolute;top:6px;left:50%;transform:translateX(-50%);
+  width:3px;height:7px;background:var(--accent);border-radius:2px;
+  animation:scrollDown 1.6s infinite;
+}
+@keyframes scrollDown{0%{opacity:1;top:6px;}100%{opacity:0;top:18px;}}
+ 
+/* ===== SECTION GENERIC ===== */
+section{position:relative;padding:120px 0;z-index:1;}
+.section-head{margin-bottom:56px;max-width:680px;}
+.section-tag{
+  font-family:var(--mono);font-size:0.78rem;color:var(--accent);
+  text-transform:uppercase;letter-spacing:2px;margin-bottom:14px;display:block;
+}
+.section-title{
+  font-family:var(--grot);font-weight:700;font-size:clamp(1.8rem,3.4vw,2.6rem);
+  letter-spacing:-0.5px;margin-bottom:16px;
+}
+.section-desc{color:var(--text-1);font-size:1.02rem;max-width:600px;}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);}
+.reveal.in{opacity:1;transform:translateY(0);}
+ 
+/* ===== ABOUT ===== */
+.about-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:60px;align-items:start;}
+.about-text p{color:var(--text-1);margin-bottom:18px;font-size:1rem;}
+.about-text strong{color:var(--text-0);}
+.about-highlight{
+  margin-top:28px;padding:18px 20px;border-left:2px solid var(--accent);
+  background:linear-gradient(90deg,var(--accent-dim),transparent);
+  border-radius:0 8px 8px 0;font-size:0.95rem;color:var(--text-0);
+}
+.value-list{display:flex;flex-direction:column;gap:14px;}
+.value-item{
+  display:flex;gap:16px;padding:18px;border:1px solid var(--border-soft);
+  border-radius:11px;background:var(--bg-card);transition:.25s;
+}
+.value-item:hover{border-color:var(--border);transform:translateX(4px);}
+.value-icon{
+  width:42px;height:42px;flex-shrink:0;border-radius:9px;
+  background:var(--accent-dim);color:var(--accent);
+  display:flex;align-items:center;justify-content:center;font-size:1.1rem;
+}
+.value-item h4{font-size:0.98rem;margin-bottom:4px;font-weight:600;}
+.value-item p{color:var(--text-2);font-size:0.87rem;}
+ 
+/* ===== SKILLS ===== */
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.skill-card{
+  background:var(--bg-card);border:1px solid var(--border-soft);border-radius:var(--radius);
+  padding:26px 24px;transition:.3s cubic-bezier(.2,.8,.2,1);position:relative;overflow:hidden;
+}
+.skill-card::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--accent),var(--accent-2));
+  transform:scaleX(0);transform-origin:left;transition:transform .35s ease;
+}
+.skill-card:hover{transform:translateY(-5px);border-color:var(--border);box-shadow:0 20px 40px -20px rgba(0,255,178,0.15);}
+.skill-card:hover::after{transform:scaleX(1);}
+.skill-head{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+.skill-icon{width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;background:var(--accent-dim);color:var(--accent);font-size:1rem;}
+.skill-card h3{font-size:1.02rem;font-weight:600;}
+.skill-tags{display:flex;flex-wrap:wrap;gap:7px;}
+.tag{
+  font-family:var(--mono);font-size:0.72rem;color:var(--text-1);
+  padding:5px 11px;border:1px solid var(--border-soft);border-radius:20px;
+  transition:.2s;
+}
+.skill-card:hover .tag{border-color:rgba(0,255,178,0.2);}
+.tag.hi{color:var(--accent);border-color:rgba(0,255,178,0.3);background:var(--accent-dim);}
+ 
+/* ===== PROJECTS ===== */
+.filter-bar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:40px;}
+.filter-btn{
+  font-family:var(--mono);font-size:0.78rem;padding:9px 17px;border-radius:8px;
+  border:1px solid var(--border-soft);color:var(--text-1);cursor:pointer;
+  background:transparent;transition:.2s;
+}
+.filter-btn:hover{color:var(--text-0);border-color:var(--border);}
+.filter-btn.active{background:var(--accent);color:#04140f;border-color:var(--accent);}
+ 
+.project-featured{
+  display:grid;grid-template-columns:1fr 1fr;gap:0;
+  border:1px solid var(--border-soft);border-radius:16px;overflow:hidden;
+  background:var(--bg-card);margin-bottom:26px;transition:.3s;
+}
+.project-featured:hover{border-color:var(--border);box-shadow:0 25px 60px -25px rgba(0,255,178,0.18);}
+.pf-visual{
+  padding:40px;display:flex;flex-direction:column;justify-content:center;gap:18px;position:relative;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(0,255,178,0.1), transparent 60%),
+    radial-gradient(circle at 80% 80%, rgba(124,92,255,0.1), transparent 55%),
+    var(--bg-2);
+  border-right:1px solid var(--border-soft);
+}
+.pf-visual .big-icon{font-size:2.6rem;color:var(--accent);opacity:0.9;}
+.pf-metric-row{display:flex;gap:22px;margin-top:8px;}
+.pf-metric{}
+.pf-metric b{display:block;font-family:var(--grot);font-size:1.5rem;color:var(--text-0);}
+.pf-metric span{font-family:var(--mono);font-size:0.68rem;color:var(--text-2);text-transform:uppercase;}
+.pf-content{padding:40px;display:flex;flex-direction:column;}
+.pf-status{
+  align-self:flex-start;font-family:var(--mono);font-size:0.68rem;
+  padding:4px 11px;border-radius:20px;margin-bottom:14px;text-transform:uppercase;letter-spacing:0.5px;
+}
+.status-done{background:rgba(0,255,178,0.12);color:var(--accent);border:1px solid rgba(0,255,178,0.25);}
+.status-progress{background:rgba(255,180,84,0.12);color:#ffb454;border:1px solid rgba(255,180,84,0.25);}
+.pf-content h3{font-family:var(--grot);font-size:1.5rem;font-weight:700;margin-bottom:12px;}
+.pf-content p{color:var(--text-1);font-size:0.92rem;margin-bottom:16px;}
+.pf-section-label{font-family:var(--mono);font-size:0.68rem;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin:14px 0 6px;}
+.pf-stack{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:8px;}
+ 
+.projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;}
+.project-card{
+  background:var(--bg-card);border:1px solid var(--border-soft);border-radius:var(--radius);
+  padding:28px;transition:.3s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column;height:100%;
+}
+.project-card:hover{transform:translateY(-6px);border-color:var(--border);box-shadow:0 25px 50px -25px rgba(0,255,178,0.18);}
+.pc-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;}
+.pc-icon{width:44px;height:44px;border-radius:10px;background:var(--accent-dim);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:1.15rem;}
+.project-card h3{font-family:var(--grot);font-size:1.15rem;font-weight:700;margin-bottom:10px;}
+.project-card p{color:var(--text-1);font-size:0.88rem;margin-bottom:16px;flex-grow:1;}
+.pc-stack{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;}
+.pc-footer{display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid var(--border-soft);}
+.pc-challenge{font-family:var(--mono);font-size:0.72rem;color:var(--text-2);}
+.pc-challenge b{color:var(--accent-2);}
+ 
+/* ===== TIMELINE (Experience + Education) ===== */
+.timeline{position:relative;padding-left:32px;}
+.timeline::before{
+  content:'';position:absolute;left:6px;top:6px;bottom:6px;width:1.5px;
+  background:linear-gradient(var(--accent),var(--border-soft));
+}
+.tl-item{position:relative;padding-bottom:44px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{
+  position:absolute;left:-32px;top:2px;width:13px;height:13px;border-radius:50%;
+  background:var(--bg-0);border:2px solid var(--accent);box-shadow:0 0 0 4px var(--accent-dim);
+}
+.tl-date{font-family:var(--mono);font-size:0.75rem;color:var(--accent);margin-bottom:8px;display:block;}
+.tl-card{background:var(--bg-card);border:1px solid var(--border-soft);border-radius:12px;padding:24px 26px;transition:.25s;}
+.tl-card:hover{border-color:var(--border);}
+.tl-card h3{font-family:var(--grot);font-size:1.1rem;margin-bottom:4px;}
+.tl-card .tl-org{font-family:var(--mono);font-size:0.82rem;color:var(--accent-2);margin-bottom:12px;display:block;}
+.tl-card p{color:var(--text-1);font-size:0.9rem;margin-bottom:10px;}
+.tl-stack{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;}
+ 
+/* ===== CERTIFICATIONS ===== */
+.cert-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.cert-card{
+  background:var(--bg-card);border:1px solid var(--border-soft);border-radius:12px;
+  padding:22px;display:flex;gap:16px;align-items:flex-start;transition:.25s;
+}
+.cert-card:hover{border-color:var(--border);transform:translateY(-3px);}
+.cert-badge{
+  width:46px;height:46px;border-radius:10px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--accent-dim),rgba(124,92,255,0.12));
+  display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:1.2rem;
+  border:1px solid var(--border);
+}
+.cert-card h4{font-size:0.92rem;font-weight:600;margin-bottom:5px;line-height:1.35;}
+.cert-card span{font-family:var(--mono);font-size:0.72rem;color:var(--text-2);}
+ 
+/* ===== ACHIEVEMENTS ===== */
+.ach-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+.ach-card{
+  text-align:center;padding:30px 18px;border:1px solid var(--border-soft);border-radius:var(--radius);
+  background:var(--bg-card);transition:.25s;
+}
+.ach-card:hover{border-color:var(--border);transform:translateY(-4px);}
+.ach-card i{font-size:1.6rem;color:var(--accent);margin-bottom:14px;}
+.ach-card h4{font-size:0.92rem;font-weight:600;margin-bottom:6px;}
+.ach-card p{font-size:0.8rem;color:var(--text-2);}
+ 
+/* ===== CONTACT ===== */
+.contact-wrap{
+  border:1px solid var(--border-soft);border-radius:20px;padding:60px;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(0,255,178,0.08), transparent 50%),
+    radial-gradient(circle at 85% 80%, rgba(124,92,255,0.08), transparent 50%),
+    var(--bg-card);
+  text-align:center;position:relative;overflow:hidden;
+}
+.contact-wrap h2{font-family:var(--grot);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;margin-bottom:16px;letter-spacing:-1px;}
+.contact-wrap > p{color:var(--text-1);max-width:520px;margin:0 auto 36px;}
+.contact-links{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:36px;}
+.contact-pill{
+  display:flex;align-items:center;gap:10px;padding:13px 22px;border-radius:30px;
+  border:1px solid var(--border-soft);background:rgba(255,255,255,0.02);
+  font-family:var(--mono);font-size:0.85rem;transition:.25s;
+}
+.contact-pill:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px);}
+.contact-pill i{color:var(--accent);}
+ 
+footer{padding:34px 0;border-top:1px solid var(--border-soft);position:relative;z-index:1;}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;}
+.footer-inner p{font-family:var(--mono);font-size:0.78rem;color:var(--text-2);}
+.footer-social{display:flex;gap:14px;}
+.footer-social a{width:36px;height:36px;border:1px solid var(--border-soft);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--text-1);transition:.2s;}
+.footer-social a:hover{color:var(--accent);border-color:var(--accent);}
+ 
+/* ===== RESPONSIVE ===== */
+@media (max-width:980px){
+  .hero-grid{grid-template-columns:1fr;}
+  .hero-visual{order:-1;margin-bottom:20px;}
+  .about-grid{grid-template-columns:1fr;gap:40px;}
+  .skills-grid{grid-template-columns:repeat(2,1fr);}
+  .projects-grid{grid-template-columns:1fr;}
+  .project-featured{grid-template-columns:1fr;}
+  .pf-visual{border-right:none;border-bottom:1px solid var(--border-soft);}
+  .cert-grid{grid-template-columns:repeat(2,1fr);}
+  .ach-grid{grid-template-columns:repeat(2,1fr);}
+  .contact-wrap{padding:40px 24px;}
+}
+@media (max-width:760px){
+  .nav-links{
+    position:fixed;top:0;right:-100%;width:78%;height:100vh;
+    background:var(--bg-1);flex-direction:column;justify-content:center;
+    transition:right .35s cubic-bezier(.2,.8,.2,1);border-left:1px solid var(--border-soft);
+  }
+  .nav-links.open{right:0;}
+  .nav-links a{font-size:1rem;padding:14px 20px;width:100%;}
+  .burger{display:flex;}
+  .nav-cta{margin:14px 20px;}
+  .hero{padding-top:120px;}
+  .hero-stats{gap:24px;}
+  .skills-grid{grid-template-columns:1fr;}
+  .cert-grid{grid-template-columns:1fr;}
+  .ach-grid{grid-template-columns:1fr 1fr;}
+  section{padding:80px 0;}
+  .container{padding:0 20px;}
+}
+</style>
+</head>
+<body>
+ 
+<div class="glow-orb glow-1"></div>
+<div class="glow-orb glow-2"></div>
+<div class="glow-orb glow-3"></div>
+ 
+<nav id="navbar">
+  <div class="container nav-inner">
+    <a href="#hero" class="logo"><span class="bracket">&lt;</span>Ikram<span class="bracket">/&gt;</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projets</a></li>
+      <li><a href="#certifications">Certifs</a></li>
+      <li><a href="#experience">Parcours</a></li>
+      <li><a href="#contact" class="nav-cta">Me contacter</a></li>
+    </ul>
+    <div class="burger" id="burger"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+ 
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="container hero-grid">
+    <div class="hero-left">
+      <div class="eyebrow"><span class="dot"></span> Disponible pour stage / alternance — 2026</div>
+      <h1>Sécuriser les systèmes,<br><span class="line2">coder avec exigence.</span></h1>
+      <p class="hero-sub">Je suis <strong>Ikram Moukhafi</strong>, étudiante ingénieure en 2ᵉ année <strong>Informatique &amp; Réseaux</strong> à l'EMSI Tanger, spécialisée en <strong>cybersécurité</strong>. Je conçois des systèmes qui tiennent la route techniquement — et qui résistent quand on les attaque.</p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary"><i class="fa-solid fa-diagram-project"></i> Voir mes projets</a>
+        <a href="#contact" class="btn btn-outline"><i class="fa-regular fa-paper-plane"></i> Me contacter</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item"><div class="stat-num"><span>6</span>+</div><div class="stat-label">Projets techniques</div></div>
+        <div class="stat-item"><div class="stat-num"><span>6</span></div><div class="stat-label">Certifications</div></div>
+        <div class="stat-item"><div class="stat-num"><span>1</span></div><div class="stat-label">Stage entreprise</div></div>
+        <div class="stat-item"><div class="stat-num"><span>3</span></div><div class="stat-label">Langues parlées</div></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="terminal">
+        <div class="terminal-head">
+          <span class="t-red"></span><span class="t-yellow"></span><span class="t-green"></span>
+          <span class="terminal-title">ikram@security ~ zsh</span>
+        </div>
+        <div class="terminal-body" id="terminalBody">
+          <div class="terminal-line" style="animation-delay:.1s"><span class="prompt">➜</span> <span class="path">~</span> whoami</div>
+          <div class="terminal-line" style="animation-delay:.4s">Ikram Moukhafi — Future Cybersecurity Engineer</div>
+          <div class="terminal-line" style="animation-delay:.7s">&nbsp;</div>
+          <div class="terminal-line" style="animation-delay:.9s"><span class="prompt">➜</span> <span class="path">~</span> cat skills.<span class="key">json</span></div>
+          <div class="terminal-line" style="animation-delay:1.2s">{</div>
+          <div class="terminal-line" style="animation-delay:1.4s">&nbsp;&nbsp;"languages": [<span class="str">"Python"</span>, <span class="str">"Java"</span>, <span class="str">"C++"</span>, <span class="str">"JS"</span>],</div>
+          <div class="terminal-line" style="animation-delay:1.6s">&nbsp;&nbsp;"security": [<span class="str">"SIEM"</span>, <span class="str">"crypto"</span>, <span class="str">"VPN"</span>],</div>
+          <div class="terminal-line" style="animation-delay:1.8s">&nbsp;&nbsp;"status": <span class="str">"open_to_opportunities"</span></div>
+          <div class="terminal-line" style="animation-delay:2s">}</div>
+          <div class="terminal-line" style="animation-delay:2.3s"><span class="prompt">➜</span> <span class="path">~</span> <span class="cursor-blink"></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-indicator"><div class="mouse"></div>SCROLL</div>
+</section>
+ 
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-tag">01 · À propos</span>
+      <h2 class="section-title">Un profil hybride : développement &amp; sécurité</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>Actuellement en <strong>2ᵉ année du cycle ingénieur Informatique et Réseaux</strong> à l'École Marocaine des Sciences de l'Ingénieur (EMSI Tanger), j'ai construit mon parcours autour d'une conviction simple : <strong>on ne peut pas bien sécuriser ce qu'on ne sait pas construire</strong>. C'est pourquoi je développe autant que je sécurise.</p>
+        <p>Mon parcours démarre par une <strong>Classe Préparatoire aux Grandes Écoles (filière PSI)</strong>, qui m'a donné une rigueur scientifique et une capacité de travail que j'applique aujourd'hui à des projets concrets : détection d'intrusions, cryptographie appliquée, architectures full-stack sécurisées.</p>
+        <p>J'ai complété ma formation académique par un stage chez <strong>Tronico</strong>, où j'ai travaillé sur un système ERP interne réel avec FastAPI et React — une expérience qui m'a confirmé mon goût pour le développement en conditions professionnelles.</p>
+        <div class="about-highlight">
+          <i class="fa-solid fa-shield-halved"></i> &nbsp;Mon objectif : rejoindre une équipe cybersécurité ou développement sécurisé pour un stage ou une alternance, où je peux allier code propre et exigence de sécurité.
+        </div>
+      </div>
+      <div class="value-list reveal">
+        <div class="value-item">
+          <div class="value-icon"><i class="fa-solid fa-code"></i></div>
+          <div><h4>Développement full-stack</h4><p>Python/Django, Java Spring Boot, FastAPI, React.js — du backend à l'interface.</p></div>
+        </div>
+        <div class="value-item">
+          <div class="value-icon"><i class="fa-solid fa-user-shield"></i></div>
+          <div><h4>Sécurité by design</h4><p>SIEM, cryptographie, architectures Zero-Knowledge, supervision réseau.</p></div>
+        </div>
+        <div class="value-item">
+          <div class="value-icon"><i class="fa-solid fa-people-group"></i></div>
+          <div><h4>Esprit d'équipe &amp; gestion de projet</h4><p>Méthodologies Agile, UML, Merise — organisation de workshops techniques.</p></div>
+        </div>
+        <div class="value-item">
+          <div class="value-icon"><i class="fa-solid fa-chess-knight"></i></div>
+          <div><h4>Rigueur &amp; stratégie</h4><p>Compétitrice d'échecs — anticipation, résolution de problèmes sous contrainte.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- SKILLS -->
+<section id="skills" style="background:var(--bg-1);">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-tag">02 · Compétences</span>
+      <h2 class="section-title">Stack technique &amp; expertise sécurité</h2>
+      <p class="section-desc">Une base large en développement, renforcée par une spécialisation réseaux &amp; cybersécurité.</p>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <div class="skill-head"><div class="skill-icon"><i class="fa-solid fa-code"></i></div><h3>Langages</h3></div>
+        <div class="skill-tags">
+          <span class="tag hi">Python</span><span class="tag hi">Java</span><span class="tag">C++</span>
+          <span class="tag">JavaScript</span><span class="tag">PHP</span><span class="tag">HTML/CSS</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-head"><div class="skill-icon"><i class="fa-solid fa-shield-halved"></i></div><h3>Réseaux &amp; Sécurité</h3></div>
+        <div class="skill-tags">
+          <span class="tag hi">VPN</span><span class="tag hi">Cryptographie</span><span class="tag">Supervision réseau</span>
+          <span class="tag">Sécurité web/mobile</span><span class="tag">Gestion d'incidents</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-head"><div class="skill-icon"><i class="fa-solid fa-layer-group"></i></div><h3>Frameworks &amp; Outils</h3></div>
+        <div class="skill-tags">
+          <span class="tag hi">Django</span><span class="tag hi">FastAPI</span><span class="tag">.NET</span>
+          <span class="tag">React.js</span><span class="tag">Visual Studio</span><span class="tag">Spring Boot</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-head"><div class="skill-icon"><i class="fa-solid fa-database"></i></div><h3>Bases de données</h3></div>
+        <div class="skill-tags">
+          <span class="tag hi">MySQL</span><span class="tag">SQL Server</span><span class="tag">Oracle</span><span class="tag">NoSQL</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-head"><div class="skill-icon"><i class="fa-solid fa-sitemap"></i></div><h3>Modélisation &amp; Gestion</h3></div>
+        <div class="skill-tags">
+          <span class="tag hi">UML</span><span class="tag hi">Merise</span><span class="tag">Agile / Scrum</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-head"><div class="skill-icon"><i class="fa-solid fa-server"></i></div><h3>Systèmes &amp; Admin</h3></div>
+        <div class="skill-tags">
+          <span class="tag hi">Linux (UNIX)</span><span class="tag">Windows</span><span class="tag">Virtualisation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-tag">03 · Projets</span>
+      <h2 class="section-title">Projets phares</h2>
+      <p class="section-desc">Une sélection de projets académiques où sécurité et ingénierie logicielle se rencontrent.</p>
+    </div>
+ 
+    <div class="filter-bar reveal">
+      <button class="filter-btn active" data-filter="all">Tous</button>
+      <button class="filter-btn" data-filter="security">Cybersécurité</button>
+      <button class="filter-btn" data-filter="fullstack">Full-Stack</button>
+      <button class="filter-btn" data-filter="blockchain">Blockchain / IA</button>
+    </div>
+ 
+    <!-- Featured project 1 : SIEM -->
+    <div class="project-featured reveal" data-cat="security">
+      <div class="pf-visual">
+        <i class="fa-solid fa-satellite-dish big-icon"></i>
+        <div>
+          <div class="pf-metric-row">
+            <div class="pf-metric"><b>24/7</b><span>Détection continue</span></div>
+            <div class="pf-metric"><b>Temps réel</b><span>Corrélation d'événements</span></div>
+            <div class="pf-metric"><b>Multi-sources</b><span>Agrégation de logs</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="pf-content">
+        <span class="pf-status status-done">Projet réalisé</span>
+        <h3>Système de Détection d'Intrusions (SIEM)</h3>
+        <p><strong>Contexte :</strong> conception d'une solution SIEM (Security Information and Event Management) pour centraliser, corréler et analyser les événements de sécurité issus de plusieurs sources réseau, avec pour objectif de détecter des comportements suspects avant qu'ils ne deviennent des incidents.</p>
+        <span class="pf-section-label">Défis techniques</span>
+        <p>Collecter et normaliser des logs hétérogènes en temps réel, définir des règles de corrélation pertinentes pour limiter les faux positifs, et concevoir une architecture capable de monter en charge sans perdre en réactivité.</p>
+        <span class="pf-section-label">Stack</span>
+        <div class="pf-stack"><span class="tag hi">Python</span><span class="tag">Analyse réseau</span><span class="tag">Cryptographie</span><span class="tag">Linux</span></div>
+      </div>
+    </div>
+ 
+    <!-- Featured project 2 : Zero Knowledge -->
+    <div class="project-featured reveal" data-cat="security">
+      <div class="pf-visual">
+        <i class="fa-solid fa-key big-icon"></i>
+        <div>
+          <div class="pf-metric-row">
+            <div class="pf-metric"><b>Zero</b><span>Knowledge serveur</span></div>
+            <div class="pf-metric"><b>AES / hash</b><span>Chiffrement local</span></div>
+            <div class="pf-metric"><b>0</b><span>Mot de passe en clair</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="pf-content">
+        <span class="pf-status status-progress">En cours</span>
+        <h3>Gestionnaire de Mots de Passe Sécurisé (Zero-Knowledge)</h3>
+        <p><strong>Contexte :</strong> développement d'un gestionnaire de mots de passe basé sur une architecture <strong>Zero-Knowledge</strong> : le serveur ne stocke et ne manipule jamais les données en clair, seul l'utilisateur détient la clé de déchiffrement.</p>
+        <span class="pf-section-label">Défis techniques</span>
+        <p>Implémenter un chiffrement/déchiffrement côté client robuste, garantir qu'aucune donnée sensible ne transite ou ne persiste en clair côté serveur, et concevoir un système de récupération de compte qui ne compromette pas le modèle Zero-Knowledge.</p>
+        <span class="pf-section-label">Stack</span>
+        <div class="pf-stack"><span class="tag hi">Cryptographie appliquée</span><span class="tag">Python</span><span class="tag">Sécurité web</span></div>
+      </div>
+    </div>
+ 
+    <!-- Grid of 4 remaining projects -->
+    <div class="projects-grid">
+      <div class="project-card reveal" data-cat="fullstack">
+        <div class="pc-top"><div class="pc-icon"><i class="fa-solid fa-store"></i></div></div>
+        <h3>MARKA — Marketplace</h3>
+        <p>Application e-commerce multi-vendeurs développée en <strong>Java / Spring Boot</strong>, avec gestion des utilisateurs, catalogue produits et logique transactionnelle côté serveur.</p>
+        <div class="pc-stack"><span class="tag hi">Java</span><span class="tag">Spring Boot</span><span class="tag">MySQL</span></div>
+        <div class="pc-footer"><span class="pc-challenge"><b>Défi:</b> architecture back-end</span></div>
+      </div>
+      <div class="project-card reveal" data-cat="fullstack">
+        <div class="pc-icon" style="margin-bottom:16px;"><i class="fa-solid fa-notes-medical"></i></div>
+        <h3>IYADA — Gestion médicale</h3>
+        <p>Plateforme de gestion de cabinet médical (patients, rendez-vous, dossiers) construite en <strong>Python / Django</strong>, pensée pour la confidentialité des données de santé.</p>
+        <div class="pc-stack"><span class="tag hi">Python</span><span class="tag">Django</span><span class="tag">SQL</span></div>
+        <div class="pc-footer"><span class="pc-challenge"><b>Défi:</b> confidentialité des données</span></div>
+      </div>
+      <div class="project-card reveal" data-cat="blockchain">
+        <div class="pc-icon" style="margin-bottom:16px;"><i class="fa-solid fa-scale-balanced"></i></div>
+        <h3>Juribot — Assistant juridique</h3>
+        <p>Assistant intelligent capable de répondre à des questions juridiques courantes, conçu pour explorer les enjeux d'automatisation de l'information légale.</p>
+        <div class="pc-stack"><span class="tag hi">Python</span><span class="tag">NLP</span><span class="tag">Base de connaissances</span></div>
+        <div class="pc-footer"><span class="pc-challenge"><b>Défi:</b> fiabilité des réponses</span></div>
+      </div>
+      <div class="project-card reveal" data-cat="blockchain">
+        <div class="pc-icon" style="margin-bottom:16px;"><i class="fa-solid fa-link"></i></div>
+        <h3>Vote Électronique — Blockchain</h3>
+        <p>Système de vote électronique s'appuyant sur la <strong>blockchain</strong> pour garantir l'intégrité, la transparence et l'immuabilité des scrutins.</p>
+        <div class="pc-stack"><span class="tag hi">Blockchain</span><span class="tag">Cryptographie</span><span class="tag">Smart contracts</span></div>
+        <div class="pc-footer"><span class="pc-challenge"><b>Défi:</b> intégrité &amp; anonymat</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- CERTIFICATIONS -->
+<section id="certifications" style="background:var(--bg-1);">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-tag">04 · Certifications</span>
+      <h2 class="section-title">Formation continue &amp; certifications internationales</h2>
+      <p class="section-desc">Des cursus suivis auprès d'institutions reconnues pour approfondir data, sécurité et ingénierie logicielle.</p>
+    </div>
+    <div class="cert-grid">
+      <div class="cert-card reveal"><div class="cert-badge"><i class="fa-brands fa-python"></i></div><div><h4>Machine Learning with Python</h4><span>IBM</span></div></div>
+      <div class="cert-card reveal"><div class="cert-badge"><i class="fa-solid fa-database"></i></div><div><h4>Introduction to NoSQL Databases</h4><span>IBM</span></div></div>
+      <div class="cert-card reveal"><div class="cert-badge"><i class="fa-solid fa-globe"></i></div><div><h4>Using Python to Access Web Data</h4><span>University of Michigan</span></div></div>
+      <div class="cert-card reveal"><div class="cert-badge"><i class="fa-solid fa-diagram-project"></i></div><div><h4>Software Design &amp; Project Management</h4><span>HKUST</span></div></div>
+      <div class="cert-card reveal"><div class="cert-badge"><i class="fa-solid fa-code"></i></div><div><h4>Programmation orientée objet en C++</h4><span>EPFL</span></div></div>
+      <div class="cert-card reveal"><div class="cert-badge"><i class="fa-solid fa-link"></i></div><div><h4>Blockchain Basics</h4><span>University at Buffalo</span></div></div>
+    </div>
+  </div>
+</section>
+ 
+<!-- EXPERIENCE + EDUCATION -->
+<section id="experience">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-tag">05 · Parcours</span>
+      <h2 class="section-title">Expérience &amp; formation</h2>
+    </div>
+    <div class="timeline">
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <span class="tl-date">Juillet 2025</span>
+        <div class="tl-card">
+          <h3>Stagiaire Développement — Tronico</h3>
+          <span class="tl-org">Entreprise internationale spécialisée en électronique</span>
+          <p>Analyse du système interne <strong>HPDM</strong> et développement d'un module de gestion des employés intégré à l'ERP interne de l'entreprise.</p>
+          <div class="tl-stack"><span class="tag hi">FastAPI</span><span class="tag hi">React.js</span><span class="tag">ERP</span></div>
+        </div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <span class="tl-date">2024 — Présent</span>
+        <div class="tl-card">
+          <h3>Cycle Ingénieur — Informatique &amp; Réseaux</h3>
+          <span class="tl-org">École Marocaine des Sciences de l'Ingénieur (EMSI), Tanger</span>
+          <p>Spécialisation en cybersécurité : sécurité des systèmes, des réseaux, cryptographie appliquée et gestion d'incidents.</p>
+        </div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <span class="tl-date">2022 — 2024</span>
+        <div class="tl-card">
+          <h3>Classe Préparatoire aux Grandes Écoles (CPGE) — Filière PSI</h3>
+          <span class="tl-org">Lycée Moulay Youssef, Rabat</span>
+          <p>Formation scientifique intensive : mathématiques, physique, sciences de l'ingénieur.</p>
+        </div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <span class="tl-date">2021 — 2022</span>
+        <div class="tl-card">
+          <h3>Baccalauréat Scientifique — Option Mathématiques</h3>
+          <span class="tl-org">Lycée Technique Moulay Youssef, Tanger — Mention Bien</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- ACHIEVEMENTS -->
+<section id="achievements" style="background:var(--bg-1);">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-tag">06 · Au-delà du code</span>
+      <h2 class="section-title">Langues &amp; activités</h2>
+    </div>
+    <div class="ach-grid">
+      <div class="ach-card reveal"><i class="fa-solid fa-language"></i><h4>Arabe</h4><p>Langue maternelle</p></div>
+      <div class="ach-card reveal"><i class="fa-solid fa-language"></i><h4>Français</h4><p>Courant</p></div>
+      <div class="ach-card reveal"><i class="fa-solid fa-language"></i><h4>Anglais</h4><p>Professionnel</p></div>
+      <div class="ach-card reveal"><i class="fa-solid fa-chess-knight"></i><h4>Échecs</h4><p>Compétitions</p></div>
+      <div class="ach-card reveal"><i class="fa-solid fa-chalkboard-user"></i><h4>Workshops</h4><p>Organisation de séminaires techniques</p></div>
+      <div class="ach-card reveal"><i class="fa-solid fa-people-group"></i><h4>Travail d'équipe</h4><p>Qualité personnelle clé</p></div>
+      <div class="ach-card reveal"><i class="fa-solid fa-arrows-spin"></i><h4>Adaptabilité</h4><p>Qualité personnelle clé</p></div>
+      <div class="ach-card reveal"><i class="fa-solid fa-comments"></i><h4>Communication</h4><p>Efficace &amp; claire</p></div>
+    </div>
+  </div>
+</section>
+ 
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-wrap reveal">
+      <h2>Construisons quelque chose de sécurisé, ensemble.</h2>
+      <p>Ouverte aux opportunités de stage et d'alternance en cybersécurité ou développement. Discutons de votre projet.</p>
+      <div class="contact-links">
+        <a href="mailto:ikrammoukhafi700@gmail.com" class="contact-pill"><i class="fa-regular fa-envelope"></i> ikrammoukhafi700@gmail.com</a>
+        <a href="tel:+212654175554" class="contact-pill"><i class="fa-solid fa-phone"></i> +212 654 175 554</a>
+        <a href="#" class="contact-pill"><i class="fa-solid fa-location-dot"></i> Tanger, Maroc</a>
+      </div>
+      <a href="mailto:ikrammoukhafi700@gmail.com" class="btn btn-primary"><i class="fa-regular fa-paper-plane"></i> Envoyer un email</a>
+    </div>
+  </div>
+</section>
+ 
+<footer>
+  <div class="container footer-inner">
+    <p>© 2026 Ikram Moukhafi — Conçu &amp; codé avec rigueur.</p>
+    <div class="footer-social">
+      <a href="mailto:ikrammoukhafi700@gmail.com"><i class="fa-regular fa-envelope"></i></a>
+      <a href="tel:+212654175554"><i class="fa-solid fa-phone"></i></a>
+      <a href="#hero"><i class="fa-solid fa-arrow-up"></i></a>
+    </div>
+  </div>
+</footer>
+ 
+<script>
+// Nav scroll state
+const nav = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+});
+ 
+// Burger menu
+const burger = document.getElementById('burger');
+const navLinks = document.getElementById('navLinks');
+burger.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+});
+document.querySelectorAll('.nav-links a').forEach(a => {
+  a.addEventListener('click', () => navLinks.classList.remove('open'));
+});
+ 
+// Active link on scroll
+const sections = document.querySelectorAll('section[id]');
+const navA = document.querySelectorAll('.nav-links a[href^="#"]');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(sec => {
+    const top = sec.offsetTop - 120;
+    if (window.scrollY >= top) current = sec.getAttribute('id');
+  });
+  navA.forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+  });
+});
+ 
+// Reveal on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+ 
+// Project filter
+const filterBtns = document.querySelectorAll('.filter-btn');
+const filterables = document.querySelectorAll('[data-cat]');
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    filterables.forEach(card => {
+      const show = filter === 'all' || card.dataset.cat === filter;
+      card.style.display = show ? '' : 'none';
+    });
+  });
+});
+</script>
+</body>
+</html>
+ 
